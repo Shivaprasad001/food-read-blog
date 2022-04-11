@@ -1,0 +1,173 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'PT Sans', sans-serif;
+}
+
+img {
+    max-width: 100%;
+}
+
+.mt-10 {
+    margin-top: 10px;
+}
+
+.main {
+    min-height: 100vh;
+}
+
+.page {
+    padding: 30px;
+}
+
+.page-title {
+    padding: 10px;
+    text-align: center;
+    font-size: 30px;
+}
+
+/* Post List Page */
+
+.post-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card {
+    width: 30%;
+    border: 1px solid #bdbdbd;
+    border-radius: 4px;
+    margin: 10px;
+    overflow: hidden;
+}
+
+.card figure {
+    border-bottom: 3px solid #fc5c02;
+}
+
+.post-details {
+    padding: 20px 15px;
+}
+
+.post-details .post-title {
+    margin-bottom: 5px;
+    font-size: 24px;
+}
+
+.post-details .post-date {
+    color: grey;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.post-details .post-desc {
+    color: #3e3e3e;
+    margin-bottom: 15px;
+    font-size: 16px;
+    line-height: 23px;
+}
+
+.read-more {
+    color: #fc5c02;
+    text-decoration: none;
+}
+
+.read-more:hover {
+    text-decoration: underline;
+}
+
+/* Post Detail Styles */
+
+.post-image-wrap {
+    text-align: center;
+}
+
+.post-detail .post-title {
+    font-size: 26px;
+    margin-bottom: 10px;
+}
+
+.post-date{
+    color: grey;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.back {
+    color: #fc5c02;
+    text-decoration: none;
+}
+
+.back:hover {
+    text-decoration: underline;
+}
+
+.edit-icon, .delete-icon {
+    width: 24px;
+}
+
+/* Admin Page Styles */
+.admin-landing-page .buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.admin-landing-page .top-section {
+    background: #cec9c9;
+    padding: 15px;
+    text-align: right;
+    margin-bottom: 15px;
+}
+
+.create-post {
+    background: red;
+    padding: 10px 20px;
+    display: inline-block;
+    border-radius: 4px;
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.add-edit-article {
+    border: 1px solid grey;
+    padding: 20px;
+}
+
+textarea {
+    width: 100%;
+    height: 150px;
+    padding: 15px;
+}
+
+.btn.reset {
+    background-color: grey;
+}
+
+.btn {
+    padding: 5px 25px;
+    height: 38px;
+    border: none;
+    background: #64AAFF;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+a.cancel {
+    display: inline-block;
+    text-decoration: none;
+    line-height: 26px;
+}
+
+.edit-page .btn {
+    margin:  0 5px;
+}
+
+.edit-page .actions {
+    display: flex;
+    align-items: center;
+}

@@ -1,0 +1,60 @@
+header {
+    height: 90px;
+    padding: 10px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #bcbcbc;
+    box-shadow: 1px 1px 5px #a5a5a5;
+}
+
+.main-logo {
+    width: 50px;
+    margin-right: 7px;
+}
+
+.logo-block {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+}
+
+.login-btn {
+    background: #227adb;
+    color: white;
+    text-decoration: none;
+    padding: 9px 25px;
+    border-radius: 4px;
+}
+
+/* Navigation Styles */
+
+.primary-nav {
+    display: flex;
+    background: #FC5C02;
+    padding: 13px;
+    justify-content: center;
+    align-items: center;
+}
+
+.primary-nav ul {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.primary-nav ul li {
+    margin:  0 10px;
+}
+
+.primary-nav ul li a {
+    color: white;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+.primary-nav ul li a:hover {
+    text-decoration: underline;
+    font-weight: bold;
+}

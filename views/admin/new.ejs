@@ -1,0 +1,44 @@
+<%- include('../layouts/header') -%>
+<%- include('../layouts/nav') %>
+<section class="edit-page page">
+    <h1 class="page-title">Add New Post</h1>
+    <div class="add-edit-article">
+        <form name="add-post" method="post">
+            <div class="row">
+                <label class="form-label">Post Title</label>
+                <input type="text" name="title" id="title" value="<%= post.title %>" class="input-field"/>
+            </div>
+            <div class="row">
+                <label class="form-label">Slug</label>
+                <input type="text" name="slug" id="slug"  value="<%= post.slug %>" class="input-field"/>
+            </div>
+            <div class="row">
+                <label class="form-label">Description</label>
+                <textarea name="description" id="description"><%= post.description %></textarea>
+            </div>
+            <!-- <div class="row">
+                <label class="form-label">Post Image</label>
+                <input type="file" name="post-image" />
+            </div> -->
+            <div class="actions">
+                <input type="reset" name="reset" class="btn reset"/>
+                <input type="submit" name="submit" value="Save" class="btn"/>
+                <a href="/admin/posts" class="btn cancel">Cancel</a>
+            </div>
+            <div class="errors">
+                <% 
+                if (typeof(errors) != 'undefined')
+                {
+                  for (let error of errors)
+                  {
+              %>
+                    <p class="errors"> <%= error.msg %></p>
+              <%
+                  }
+                }
+              %>
+            </div>
+        </form>
+    </div>
+</section>
+<%- include('../layouts/footer') %> 

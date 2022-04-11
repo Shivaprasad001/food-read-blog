@@ -1,0 +1,24 @@
+<%- include('layouts/header') -%>
+<%- include('layouts/nav') %>
+<section class="edit-page page">
+    <h1>Add New Post</h1>
+    <form name="add-post" method="post">
+        <div class="row">
+            <label class="form-label">Post Title</label>
+            <input type="text" name="title" class="input-field"/>
+        </div>
+        <div class="row">
+            <label class="form-label">Slug</label>
+            <input type="text" name="slug" class="input-field"/>
+        </div>
+        <div class="row">
+            <label class="form-label">Post Image</label>
+            <input type="file" name="post-image" />
+        </div>
+        <div class="actions">
+            <input type="reset" name="reset"/>
+            <input type="submit" name="submit"/>
+        </div>
+    </form>
+</section>
+<%- include('layouts/footer') %> 

@@ -1,0 +1,36 @@
+<%- include('../layouts/header') -%>
+<%- include('../layouts/nav') %>
+<section class="page admin-landing-page">
+    <div class="top-section">
+        <a href="/admin/new" class="create-post">Create Post</a>
+    </div>
+    <h1 class="page-title">Admin Page</h1>
+    <div class="post-list">
+        <% posts.forEach(post => { %>
+        <div class="card">
+            <figure>
+                <img src="/assets/posts/healthy-food.jpg" alt="Post image" class="post-image"/>
+            </figure>
+            <div class="post-details">
+                <h2 class="post-title"><%= post.title %></h2>
+                <div class="post-date">
+                    <p><%= post.createdDate.toLocaleDateString() %></p>
+                </div>
+                <div class="post-desc">
+                    <p>
+                        <%= post.description %> 
+                    </p>
+                </div>
+                <div class="buttons">
+                    <a href="/admin/posts/<%= post._id %>" class="read-more">Read More</a>
+                    <div class="">
+                        <a href="/admin/edit/<%= post._id %>"><img src="/assets/edit.png" class="edit-icon"/></a>
+                        <a href="/admin/delete/<%= post._id %>"><img src="/assets/delete.png" class="delete-icon"/></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <%})%>
+    </div>
+</section>
+<%- include('../layouts/footer') %> 

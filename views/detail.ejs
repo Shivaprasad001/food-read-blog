@@ -1,0 +1,22 @@
+<%- include('layouts/header') -%>
+<%- include('layouts/nav') %>
+<section class="detail-page page">
+    <div class="post-detail">
+        <figure class="post-image-wrap">
+            <img src="/assets/posts/healthy-food.jpg" class="post-image" alt="Post Image"/>
+        </figure>
+        <h1 class="post-title"><%= post.title %> </h1>
+        <div class="post-date"><%= post.createdDate.toLocaleDateString() %> </div>
+        <div class="post-desc">
+            <%= post.description %> 
+        </div>
+        <div class="mt-10">
+            <% if(!isUserLoggedIn){ %> 
+                <a href="/" class="back">Back to Posts</a>
+            <% } else { %> 
+                <a href="/admin" class="back">Back to Posts</a>
+            <% } %> 
+        </div>
+    </div>
+</section>
+<%- include('layouts/footer') %> 

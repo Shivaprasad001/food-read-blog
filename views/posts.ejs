@@ -1,0 +1,31 @@
+<%- include('layouts/header') -%>
+<%- include('layouts/nav') %>
+<section class="page posts-list-page">
+    <div class="banner-section">
+        <h1 class="page-title">All Posts</h1>
+    </div>
+    <div class="post-list">
+        <% posts.forEach(post => { %>
+            <div class="card">
+                <figure>
+                    <img src="./assets/posts/healthy-food.jpg" alt="Post image" class="post-image"/>
+                </figure>
+                <div class="post-details">
+                    <h2 class="post-title"><%= post.title %></h2>
+                    <div class="post-date">
+                        <p><%= post.createdDate.toLocaleDateString() %> </p>
+                    </div>
+                    <div class="post-desc">
+                        <p>
+                           <%= post.description.substring(0, 150) %> 
+                        </p>
+                    </div>
+                    <div class="buttons">
+                        <a href="/posts/<%= post._id %>" class="read-more">Read More</a>
+                    </div>
+                </div>
+            </div>
+        <%})%>
+    </div>
+</section>
+<%- include('layouts/footer') %> 
