@@ -50,12 +50,24 @@ router.post('/edit/:id', (req, res) => {
         res.redirect('/login');
     } else {
         const id = req.params.id;
+        var file;
+        let fileName;
+        if(req.files) {
+            file = req.files.file;
+            fileName = file.name;
+            file.mv(`public/assets/uploads/${fileName}`, function(err) {
+                console.log(err)
+            });
+        }
         Post.findOne({_id: id}).exec((error, post) => {
             if(post) {
                 post.title = req.body.title;
                 post.slug = req.body.slug;
                 post.createdDate = new Date();
                 post.description = req.body.description;
+                if(fileName) {
+                    post.image = fileName;
+                }
                 post.save();
                 res.redirect('/admin/posts');
             } else {
@@ -72,15 +84,25 @@ router.post('/new', [
         res.redirect('/login');
     } else {
         const errors = validationResult(req);
+        var file;
+        let fileName;
         if (!errors.isEmpty())
         {
             res.render('new', {post: new Post(), errors : errors.array()});
+        }
+        if(req.files) {
+            file = req.files.file;
+            fileName = file.name;
+            file.mv(`public/assets/uploads/${fileName}`, function(err) {
+                console.log(err)
+            });
         }
 
         const post = new Post({
             title: req.body.title,
             slug: req.body.slug,
             description: req.body.description,
+            image: fileName,
         });
         try {
             result = await post.save();
