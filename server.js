@@ -5,6 +5,7 @@ const articleRoutes = require('./routes/posts');
 const loginRoutes = require('./routes/login');
 const adminRoutes = require('./routes/admin');
 const session = require('express-session');
+const upload = require('express-fileupload');
 
 mongoose.connect('mongodb://localhost:27017/foodreadblog',{
     useNewUrlParser: true,
@@ -14,6 +15,7 @@ mongoose.connect('mongodb://localhost:27017/foodreadblog',{
 const app = express();
 
 app.use(express.urlencoded({extended: true}));
+app.use(upload());
 app.use(session({
     secret: 'thisistherandomsecretkey',
     resave: false,

@@ -9,7 +9,7 @@
         <% posts.forEach(post => { %>
         <div class="card">
             <figure>
-                <img src="/assets/posts/healthy-food.jpg" alt="Post image" class="post-image"/>
+                <img src="/assets/uploads/<%= post.image%>" alt="Post image" class="post-image"/>
             </figure>
             <div class="post-details">
                 <h2 class="post-title"><%= post.title %></h2>
