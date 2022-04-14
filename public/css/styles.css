@@ -171,3 +171,16 @@ a.cancel {
     display: flex;
     align-items: center;
 }
+
+.required-field , .error{
+    color: red;
+}
+
+.required-field {
+   display: inline-block;
+   margin-left: 5px; 
+}
+
+.error {
+    margin-top: 5px;
+}

@@ -5,42 +5,43 @@
     <h1 class="page-title">Add New Post</h1>
     <div class="add-edit-article">
         <form name="add-post" method="post" enctype="multipart/form-data">
+            <% 
+                let errorMsg = {};
+                if(typeof(errors) != 'undefined') {
+                    for (let error of errors)
+                    {
+                        errorMsg[error.param] = error.msg
+                    }   
+                }
+            %> 
             <div class="row">
-                <label class="form-label">Post Title</label>
+                <label class="form-label">Post Title<sup class="required-field">*</sup></label>
                 <input type="text" name="title" id="title" value="<%= post.title %>" class="input-field"/>
+                <span class="error"><%= errorMsg.title %> </span>
             </div>
             <div class="row">
-                <label class="form-label">Slug</label>
+                <label class="form-label">Slug<sup class="required-field">*</sup></label>
                 <input type="text" name="slug" id="slug"  value="<%= post.slug %>" class="input-field"/>
+                <span class="error"><%= errorMsg.slug %> </span>
             </div>
             <div class="row">
-                <label class="form-label">Description</label>
+                <label class="form-label">Description<sup class="required-field">*</sup></label>
                 <textarea name="description" id="description"><%= post.description %></textarea>
+                <span class="error"><%= errorMsg.description %> </span>
             </div>
             <div class="row">
                 <label class="form-label">Post Image</label>
                 <input type="file" id="file" name="file" />
             </div>
-            <div class="row">
-                Current file: <span><%= post.image %></span> <img width=70 src="/assets/uploads/<%= post.image %>" />
-            </div>
+            <% if(post.image){ %>
+                <div class="row" >
+                    <strong>Current file: </strong> <span><%= post.image %></span> <img width=70 src="/assets/uploads/<%= post.image %>" />
+                </div>
+            <% } %>
             <div class="actions">
                 <input type="reset" name="reset" class="btn reset"/>
                 <input type="submit" name="submit" value="Save" class="btn"/>
                 <a href="/admin/posts" class="btn cancel">Cancel</a>
-            </div>
-            <div class="errors">
-                <% 
-                if (typeof(errors) != 'undefined')
-                {
-                  for (let error of errors)
-                  {
-              %>
-                    <p class="errors"> <%= error.msg %></p>
-              <%
-                  }
-                }
-              %>
             </div>
         </form>
     </div>
