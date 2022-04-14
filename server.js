@@ -26,6 +26,7 @@ app.set('views', [
     path.join(__dirname, 'views/admin')
 ]);
 app.use(express.static(path.join(__dirname + '/public')));
+app.use('/tinymce', express.static(path.join(__dirname, 'node_modules', 'tinymce')));
 app.set('view engine', 'ejs');
 
 app.use(loginRoutes);

@@ -45,7 +45,11 @@ router.get('/new', (req, res) => {
     }
 })
 
-router.post('/edit/:id', (req, res) => {
+router.post('/edit/:id', [
+    check ('title', 'Title is required!').notEmpty(),
+    check('slug', 'Slug is required').notEmpty(),
+    check('description', 'Description is required').notEmpty(),
+], (req, res) => {
     if(!req.session.isUserLoggedIn) {
         res.redirect('/login');
     } else {
@@ -61,10 +65,10 @@ router.post('/edit/:id', (req, res) => {
         }
         Post.findOne({_id: id}).exec((error, post) => {
             if(post) {
-                post.title = req.body.title;
-                post.slug = req.body.slug;
+                post.title = req.body.title ? req.body.title : page.title;
+                post.slug = req.body.slug ? req.body.slug : post.slug;
                 post.createdDate = new Date();
-                post.description = req.body.description;
+                post.description = req.body.description ? req.body.description : post.description;
                 if(fileName) {
                     post.image = fileName;
                 }
@@ -79,36 +83,39 @@ router.post('/edit/:id', (req, res) => {
 
 router.post('/new', [
     check ('title', 'Title is required!').notEmpty(),
+    check('slug', 'Slug is required').notEmpty(),
+    check('description', 'Description is required').notEmpty(),
 ], async (req, res) => {
     if(!req.session.isUserLoggedIn) {
         res.redirect('/login');
     } else {
-        const errors = validationResult(req);
+        let errors = validationResult(req);
         var file;
         let fileName;
         if (!errors.isEmpty())
         {
             res.render('new', {post: new Post(), errors : errors.array()});
-        }
-        if(req.files) {
-            file = req.files.file;
-            fileName = file.name;
-            file.mv(`public/assets/uploads/${fileName}`, function(err) {
-                console.log(err)
-            });
-        }
+        } else {
+            if(req.files) {
+                file = req.files.file;
+                fileName = file.name;
+                file.mv(`public/assets/uploads/${fileName}`, function(err) {
+                    console.log(err)
+                });
+            }
 
-        const post = new Post({
-            title: req.body.title,
-            slug: req.body.slug,
-            description: req.body.description,
-            image: fileName,
-        });
-        try {
-            result = await post.save();
-        res.redirect(`/admin/posts/${post.id}`);  
-        } catch (error) {
-            res.render('new', { post });
+            const post = new Post({
+                title: req.body.title,
+                slug: req.body.slug,
+                description: req.body.description,
+                image: fileName,
+            });
+            try {
+                result = await post.save();
+            res.redirect(`/admin/posts/${post.id}`);  
+            } catch (error) {
+                res.render('new', { post });
+            }
         }
     }
 });
