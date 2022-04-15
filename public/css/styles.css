@@ -46,6 +46,11 @@ img {
     border-bottom: 3px solid #fc5c02;
 }
 
+.post-list .card figure .post-image {
+    margin-bottom: -5px;
+    width: 100%;
+}
+
 .post-details {
     padding: 20px 15px;
 }
@@ -183,4 +188,15 @@ a.cancel {
 
 .error {
     margin-top: 5px;
+}
+
+/* 404 Page Styles */
+
+.page-not-found{
+    background: #F2F2F2;
+    text-align: center;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

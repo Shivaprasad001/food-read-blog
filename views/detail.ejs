@@ -3,7 +3,11 @@
 <section class="detail-page page">
     <div class="post-detail">
         <figure class="post-image-wrap">
+            <% if(post.image) { %> 
             <img src="/assets/uploads/<%= post.image%>" class="post-image" width="50%" alt="Post Image"/>
+            <% } else { %>
+                <img src="/assets/posts/no-image.png" alt="No image" class="post-image no-image"/>
+            <% } %> 
         </figure>
         <h1 class="post-title"><%= post.title %> </h1>
         <div class="post-date"><%= post.createdDate.toLocaleDateString() %> </div>

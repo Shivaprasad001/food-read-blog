@@ -4,7 +4,7 @@ const Post = require('./../models/post');
 
 router.get('/', (req, res) => {
     Post.find({}).exec((err, posts) => {
-        res.render('posts', { posts });
+        res.render('posts', { posts, isUserLoggedIn: req.session.isUserLoggedIn });
     })
 });
 

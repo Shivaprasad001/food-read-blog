@@ -8,7 +8,11 @@
         <% posts.forEach(post => { %>
             <div class="card">
                 <figure>
-                    <img src="./assets/uploads/<%= post.image%>" alt="Post image" class="post-image"/>
+                    <% if(post.image) { %> 
+                        <img src="./assets/uploads/<%= post.image%>" alt="Post image" class="post-image"/>
+                    <% } else { %>
+                        <img src="/assets/posts/no-image.png" alt="No image" class="post-image no-image"/>
+                    <% } %> 
                 </figure>
                 <div class="post-details">
                     <h2 class="post-title"><%= post.title %></h2>

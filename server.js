@@ -32,5 +32,8 @@ app.set('view engine', 'ejs');
 app.use(loginRoutes);
 app.use(articleRoutes);
 app.use('/admin', adminRoutes);
+app.use(function(req, res) {
+    res.render('404', {isUserLoggedIn: req.session.isUserLoggedIn});
+})
 
 app.listen(5000);

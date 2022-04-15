@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
     } else {
         Post.find({}).exec((error, posts) => {
             if(posts)
-            res.render('admin/admin',  {posts});
+            res.render('admin/admin',  {posts, isUserLoggedIn: req.session.isUserLoggedIn});
         });
     }
 });
@@ -21,7 +21,7 @@ router.get('/posts', (req, res) => {
     } else {
         Post.find({}).exec((error, posts) => {
             if(posts)
-            res.render('admin/admin',  {posts});
+            res.render('admin/admin',  {posts, isUserLoggedIn: req.session.isUserLoggedIn});
         });
     }
 });
@@ -41,7 +41,7 @@ router.get('/new', (req, res) => {
     if(!req.session.isUserLoggedIn) {
         res.redirect('/login');
     } else {
-        res.render('admin/new', {post: new Post(), errors: undefined});
+        res.render('admin/new', {post: new Post(), errors: undefined, isUserLoggedIn: req.session.isUserLoggedIn});
     }
 })
 
@@ -127,7 +127,7 @@ router.get('/edit/:id', (req, res) => {
         let id = req.params.id;
         Post.findById({_id: id}).exec((error, post) => {
             if(!error) {
-                res.render('new', { post })
+                res.render('new', { post, isUserLoggedIn: req.session.isUserLoggedIn })
             }
         })
     }

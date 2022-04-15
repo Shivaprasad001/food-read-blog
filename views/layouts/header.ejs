@@ -18,6 +18,10 @@
         <img src="/assets/Food-Read-Icon.png" class="main-logo" title="Food Read Logo"/>
         Food Read
     </span> 
-    <a href="/login" class="login-btn">Login</a>
+    <% if(!isUserLoggedIn) {%> 
+        <a href="/login" class="login-btn">Login</a>
+    <% } else {%> 
+        <a href="/logout" class="login-btn">Logout</a>
+    <% } %> 
 </header>
 <main class="main">

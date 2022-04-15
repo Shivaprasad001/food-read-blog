@@ -46,6 +46,7 @@ header {
 
 .primary-nav ul li {
     margin:  0 10px;
+    color: white;
 }
 
 .primary-nav ul li a {
@@ -57,4 +58,21 @@ header {
 .primary-nav ul li a:hover {
     text-decoration: underline;
     font-weight: bold;
+}
+
+.primary-nav .sub-menu {
+    position: absolute;
+    background: #fc5c02;
+    flex-wrap: wrap;
+    padding: 10px;
+    width: 200px;
+    display: none;
+}
+
+.primary-nav .sub-menu li {
+    width: 100%;
+}
+
+.primary-nav ul li.has-submenu:hover .sub-menu{
+    display: flex;
 }

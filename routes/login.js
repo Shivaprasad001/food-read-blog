@@ -4,7 +4,7 @@ const session = require('express-session');
 const Users = require('./../models/users');
 
 router.get('/login', (req, res) => {
-    res.render('login');
+    res.render('login', {isUserLoggedIn : false});
 })
 
 router.post('/login', (req, res) => {
@@ -17,14 +17,14 @@ router.post('/login', (req, res) => {
            req.session.isUserLoggedIn = true;
            res.redirect('/admin');
        } else {
-           res.render('login', {error: "Sorry Login Failed. Please try again!"})
+           res.render('login', {isUserLoggedIn: false, error: "Sorry Login Failed. Please try again!"})
        }
    })
 });
 
 router.get('/logout', (req, res) => {
     req.session.username = "";
-    req.session.isLoggedIn = false;
+    req.session.isUserLoggedIn = false;
     res.redirect('/');
 })
 
